@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container mt-2">
+		<div class="row">
+			<div class="col-md-6 mx-auto">
+				<div class="card mt-3">
+					<div class="card-header text-center" th:text="${title}"></div>
+					<div class="card-body">
+						<form th:action="@{/form}" th:object="${song}" method="post">
+							<div class="form-group">
+								<label for="title">Title</label> <input th:field="*{title}"
+									type="text" class="form-control" id="title"
+									aria-describedby="emailHelp" required="required"
+									placeholder="Enter the song title" autofocus>
+							</div>
+
+							<div class="form-group">
+								<label for="artist">Artist</label> <input
+									th:field="*{artistName}" type="text" class="form-control"
+									id="artist" aria-describedby="emailHelp" required="required"
+									placeholder="Enter the artist name">
+							</div>
+
+							<div class="form-group">
+								<label for="album">Album</label> <input th:field="*{album}"
+									type="text" class="form-control" id="album"
+									aria-describedby="emailHelp" required="required"
+									placeholder="Enter the song album">
+							</div>
+							<div class="form-group">
+								<label for="year">Year</label> <input th:field="*{year}"
+									type="number" class="form-control" id="year"
+									aria-describedby="emailHelp" required="required"
+									placeholder="Enter the song year">
+							</div>
+							<div class="form-group">
+								<label for="year">Image</label>
+								<textarea th:field="*{image}" class="form-control" id="image"
+									required="required"
+									placeholder="Enter the URL of the song image"></textarea>
+							</div>
+							<div class="form-group">
+								<label for="duration">Duration</label> <input
+									th:field="*{duration}" type="text" class="form-control"
+									id="duration" aria-describedby="emailHelp" required="required"
+									placeholder="Enter the song duaration">
+							</div>
+
+							<div class="form-group">
+								<label for="video">Video</label> <input th:field="*{video}"
+									type="text" class="form-control" id="video"
+									aria-describedby="emailHelp" required="required"
+									placeholder="Enter the URL of the song video">
+							</div>
+
+							<div class="form-group">
+								<button class="btn btn-success" th:text="${title}"></button>
+							</div>
+						</form>
+
+					</div>
+
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+	<footer th:replace="layout/layout :: footer"></footer>
+
+	<div th:replace="layout/layout :: scripts"></div>
+
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:fragment="head">
+<meta charset="UTF-8">
+<title th:text="${title}"></title>
+<link rel="stylesheet"
+	href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+	integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+	crossorigin="anonymous" />
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+
+<style>
+.dim {
+	height: 200px;
+}
+
+.myf {
+	position: relative;
+	bottom: 0;
+}
+</style>
+
+</head>
+<body>
+	<header th:fragment="header">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<a class="navbar-brand" th:href="@{/songs}">MEMORY SONGS</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarColor02" aria-controls="navbarColor02"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarColor02">
+				<ul class="navbar-nav mr-auto">
+
+					<li class="nav-item"><a class="nav-link" th:href="@{/form}">Add
+							Song</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/songs}">List
+							Song</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="http://localhost:8181/WS/Songs" target="_blank">WSDL</a></li>
+
+				</ul>
+				<div class="alert alert-success my-0 py-0 custom-alert"
+					th:if="${success != null}" th:text="${success}" role="alert"></div>
+				<div class="alert alert-danger my-0 py-0 custom-alert"
+					th:if="${error != null}" th:text="${error}" role="alert"></div>
+				<div class="alert alert-warning my-0 py-0 custom-alert"
+					th:if="${warning != null}" th:text="${warning}" role="alert"></div>
+				<div class="alert alert-info my-0 py-0 custom-alert"
+					th:if="${info != null}" th:text="${info}" role="alert"></div>
+				<div class="my-2 ml-4 my-lg-0">
+					<button class="btn btn-danger my-2 my-sm-0" data-toggle="modal"
+						data-target="#exampleModal">About</button>
+				</div>
+			</div>
+		</nav>
+
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">WEB SERVICE
+							SONGS</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<h4 class="text-center">APLICACIONES DISTRIBUIDAS</h4>
+						<p class="text-justify">Application developed with JAX-WS from
+							JAVA and the frontend in Spring Boot Framework</p>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+
+	</header>
+	<div class="container"></div>
+	<footer th:fragment="footer"
+		class="bg-light text-center text-lg-start mt-4 myf">
+		<!-- Copyright -->
+
+		<div class="text-center p-3"
+			style="background-color: rgba(0, 0, 0, 0.2)">
+			© 2020 Copyright: <a class="text-dark"
+				href="http://localhost:8080/songs">Developed for Kevin
+				Catucuamba & Marlon Valverde</a>
+			<p>Web Service with JAXWS and Spring Boot</p>
+		</div>
+
+		<!-- Copyright -->
+	</footer>
+
+	<div th:fragment="scripts">
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script th:src="@{/js/jquery-3.3.1.slim.min.js}"></script>
+		<script th:src="@{/js/popper.min.js}"></script>
+		<script th:src="@{/js/bootstrap.min.js}"></script>
+		<script th:src="@{/js/jquery.min.js}"></script>
+		<script type="text/javascript">
+			window.setTimeout(function() {
+				//$(".custom-alert").alert('close'); <--- Do not use this
+
+				$(".custom-alert").slideUp(500, function() {
+					$(this).remove();
+				});
+			}, 3000);
+		</script>
+	</div>
+</body>
+</html>
