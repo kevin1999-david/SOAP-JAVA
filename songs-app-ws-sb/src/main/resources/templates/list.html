@@ -6,25 +6,43 @@
 	<div class="container mt-2">
 		<div class="row">
 
+			<div th:if="${#lists.size(songs) == 0}"
+				class="col-12 col-sm-6 m-auto py-5">
 
-			<div th:each="song: ${songs}"
+
+				<div class="card text-white bg-dark my-5">
+					<div class="card-header">Memory Songs says</div>
+					<div class="card-body">
+						<h5 class="card-title">There are no songs in the database yet</h5>
+						<p class="card-text">Create new songs by clicking Add Song
+							option.</p>
+					</div>
+				</div>
+
+			</div>
+
+			<div th:if="${#lists.size(songs) > 0}" th:each="song: ${songs}"
 				class="col-12 col-sm-6 col-lg-3 card-q card-group">
 				<div class="card mb-3">
 					<a th:href="${song.video}" target="_blank"> <img
-						th:src="${song.image}"
-						class="card-img-top img-fluid dim"
+						th:src="${song.image}" class="card-img-top img-fluid dim"
 						alt="There is no image"
 						onerror="this.src='https://st4.depositphotos.com/17828278/24401/v/600/depositphotos_244011872-stock-illustration-image-vector-symbol-missing-available.jpg'">
 					</a>
 					<div class="card-body">
 						<h6 class="card-title text-center" th:text="${song.title}"></h6>
-						<p class="card-text text-muted"
-							th:text="'Artist: ' + ${song.artistName}"></p>
-						<p class="card-text text-muted"
-							th:text="'Album: ' + ${song.album}"></p>
-						<p class="card-text text-muted" th:text="'Year: ' + ${song.year}"></p>
-						<p class="card-text text-muted"
-							th:text="'Duration: ' + ${song.duration}"></p>
+						<p class="card-text text-muted">
+							<strong>Artist:</strong> <span th:text="${song.artistName}"></span>
+						</p>
+						<p class="card-text text-muted">
+							<strong>Album:</strong> <span th:text="${song.album}"></span>
+						</p>
+						<p class="card-text text-muted">
+							<strong>Year:</strong> <span th:text="${song.year}"></span>
+						</p>
+						<p class="card-text text-muted">
+							<strong>Duration:</strong> <span th:text="${song.duration}"></span>
+						</p>
 					</div>
 					<div class="card-footer text-muted p-1 text-right">
 						<a th:href="@{/form/}+${song.id}" class="btn btn-success btn-sm">
